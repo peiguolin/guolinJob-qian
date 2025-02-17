@@ -47,9 +47,6 @@
           <div style="width: 100%;">
             <jmap></jmap>
           </div>
-<!--          <div>-->
-<!--            34-->
-<!--          </div>-->
         </div>
       </div>
   </el-card>

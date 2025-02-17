@@ -8,14 +8,14 @@
           class="input-with-select"
       >
         <template #prepend>
-          <el-button  :icon="Search" />
-        </template>
-        <template #append>
           <el-select v-model="select" placeholder="Select" style="width: 115px">
             <el-option label="Restaurant" value="1" />
             <el-option label="Order No." value="2" />
             <el-option label="Tel" value="3" />
           </el-select>
+        </template>
+        <template #append>
+          <el-button :icon="Search" />
         </template>
       </el-input>
     </div>
@@ -27,24 +27,34 @@
         <rightComponent @showChat="showChat"></rightComponent>
       </div>
       <div style="padding-left: 15px;margin-top: 40%">
+
         <el-button type="text" @click="toPublish">点击打开 Dialog</el-button>
-<!--        <el-button color="#626aef" lain icon="el-icon-plus" @click="toPublish"></el-button>-->
+
         <el-dialog
             v-model="dialogVisible"
-            title="Tips"
+            title="创建招聘"
             width="500"
             :before-close="handleClose"
         >
-          <span>This is a message</span>
-          <template #footer>
-            <div class="dialog-footer">
-              <el-button @click="dialogVisible = false">Cancel</el-button>
-              <el-button type="primary" @click="dialogVisible = false">
-                Confirm
-              </el-button>
-            </div>
-          </template>
+          <create-job @handleClose="handleClose"></create-job>
         </el-dialog>
+
+<!--        <el-dialog-->
+<!--            v-model="dialogVisible"-->
+<!--            title="Tips"-->
+<!--            width="500"-->
+<!--            :before-close="handleClose"-->
+<!--        >-->
+<!--          <span>创建职位</span>-->
+<!--          <template #footer>-->
+<!--            <div class="dialog-footer">-->
+<!--              <el-button @click="dialogVisible = false">Cancel</el-button>-->
+<!--              <el-button type="primary" @click="dialogVisible = false">-->
+<!--                Confirm-->
+<!--              </el-button>-->
+<!--            </div>-->
+<!--          </template>-->
+<!--        </el-dialog>-->
 
       </div>
     </div>
@@ -58,7 +68,9 @@
 import leftComponent from "@/components/leftComponent.vue"
 import rightComponent from "@/components/rightComponent.vue"
 import publish from "@/components/publish.vue"
-
+import createJob from "@/components/createJob.vue"
+import { ref } from 'vue'
+import { ElMessageBox } from 'element-plus'
   export default {
     data(){
       return{
@@ -68,6 +80,7 @@ import publish from "@/components/publish.vue"
       }
     },
     methods:{
+
       toPublish(){
         console.log("toPublish")
         this.dialogVisible = true
@@ -77,9 +90,9 @@ import publish from "@/components/publish.vue"
 
       },
       handleClose(done) {
-        this.$confirm('确认关闭？')
+        ElMessageBox.confirm('确认关闭？')
             .then(_ => {
-              done();
+              this.dialogVisible = false;
             })
             .catch(_ => {});
       },
@@ -88,7 +101,7 @@ import publish from "@/components/publish.vue"
       }
     },
     components:{
-      leftComponent,rightComponent,publish
+      leftComponent,rightComponent,publish,createJob
     }
   }
 </script>

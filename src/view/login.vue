@@ -79,7 +79,7 @@ import {login} from "../api/index.js"
 </script>
 <style scoped>
 .center {
-  //width: 1920px;
+  /* width: 1920px; */
   height: 800px;
   background-size: 100% 100%;
   background-repeat: no-repeat;

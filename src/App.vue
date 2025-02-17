@@ -17,7 +17,6 @@ html,body{
   padding: 0px;
   width: 100%;
   max-width: none;
-  //overflow: hidden;
-
+  /* overflow: hidden; */
 }
 </style>
