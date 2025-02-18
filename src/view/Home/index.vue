@@ -28,8 +28,8 @@
       </div>
       <div style="padding-left: 15px;margin-top: 40%">
 
-        <el-button type="text" @click="toPublish">点击打开 Dialog</el-button>
-
+<!--        <el-button type="text" @click="toPublish">点击打开 Dialog</el-button>-->
+        <el-button type="success" @click="toPublish" size="large"  circle ><el-icon><Plus /></el-icon></el-button>
         <el-dialog
             v-model="dialogVisible"
             title="创建招聘"
@@ -38,24 +38,6 @@
         >
           <create-job @handleClose="handleClose"></create-job>
         </el-dialog>
-
-<!--        <el-dialog-->
-<!--            v-model="dialogVisible"-->
-<!--            title="Tips"-->
-<!--            width="500"-->
-<!--            :before-close="handleClose"-->
-<!--        >-->
-<!--          <span>创建职位</span>-->
-<!--          <template #footer>-->
-<!--            <div class="dialog-footer">-->
-<!--              <el-button @click="dialogVisible = false">Cancel</el-button>-->
-<!--              <el-button type="primary" @click="dialogVisible = false">-->
-<!--                Confirm-->
-<!--              </el-button>-->
-<!--            </div>-->
-<!--          </template>-->
-<!--        </el-dialog>-->
-
       </div>
     </div>
 
@@ -69,9 +51,14 @@ import leftComponent from "@/components/leftComponent.vue"
 import rightComponent from "@/components/rightComponent.vue"
 import publish from "@/components/publish.vue"
 import createJob from "@/components/createJob.vue"
-import { ref } from 'vue'
 import { ElMessageBox } from 'element-plus'
+import {Edit, Plus,} from "@element-plus/icons-vue";
   export default {
+    computed: {
+      Edit() {
+        return Edit
+      }
+    },
     data(){
       return{
         images:[],
@@ -101,6 +88,7 @@ import { ElMessageBox } from 'element-plus'
       }
     },
     components:{
+      Plus,
       leftComponent,rightComponent,publish,createJob
     }
   }

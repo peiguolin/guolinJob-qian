@@ -3,6 +3,7 @@ import App from './App.vue'
 import { router } from "./router/index";
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 // 全局引入 ElMessage 和 ElMessageBox
 import { ElMessage, ElMessageBox } from 'element-plus';
@@ -13,6 +14,9 @@ app.use(ElementPlus);
 // 将 ElMessage 和 ElMessageBox 添加到全局属性中
 app.config.globalProperties.$message = ElMessage;
 app.config.globalProperties.$confirm = ElMessageBox.confirm;
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+}
 
 app.mount('#app');
 
